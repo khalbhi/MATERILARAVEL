@@ -53,3 +53,4 @@ Route::get("/fakultas/update", [FakultasController::class, "update"]);
 Route::get("/fakultas/insertelq", [FakultasController::class, "insertelq"]);
 
 Route::get("/programstudi", [ProdiController::class, "index"]);
+Route::get("/programstudi/create", [ProdiController::class, "create"]);

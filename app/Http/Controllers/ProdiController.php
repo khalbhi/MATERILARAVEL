@@ -12,4 +12,10 @@ class ProdiController extends Controller
         $kampus = "Universitas MDP";
         return view("programstudi.index", compact('programstudi', 'kampus'));
     }
+
+    public function create()
+    {
+       $kampus = "Universitas MDP";
+       return view("programstudi.create", compact('kampus'));
+    }
 }
