@@ -52,5 +52,8 @@ Route::get("/fakultas/update", [FakultasController::class, "update"]);
 
 Route::get("/fakultas/insertelq", [FakultasController::class, "insertelq"]);
 
-Route::get("/programstudi", [ProdiController::class, "index"]);
-Route::get("/programstudi/create", [ProdiController::class, "create"]);
+Route::get("/programstudi", [ProdiController::class, "index"])->name("programstudi.index");
+//untuk menapilkan form tambah prodi
+Route::get("/programstudi/create", [ProdiController::class, "create"])->name("programstudi.create");
+//untuk menyimpan data tambah prodi
+Route::post("/programstudi/store", [ProdiController::class, "store"])->name("programstudi.store");
