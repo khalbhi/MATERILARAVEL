@@ -57,3 +57,14 @@ Route::get("/programstudi", [ProdiController::class, "index"])->name("programstu
 Route::get("/programstudi/create", [ProdiController::class, "create"])->name("programstudi.create");
 //untuk menyimpan data tambah prodi
 Route::post("/programstudi/store", [ProdiController::class, "store"])->name("programstudi.store");
+
+//ke halaman detail /view detail
+Route::get("/programstudi/detail/{id}", [ProdiController::class, "show"]);
+
+//ke halaman form edit
+Route::get("/programstudi/edit/{id}", [ProdiController::class, "edit"])->name("programstudi.edit");
+//untuk mengupdate data edit prodi
+Route::patch("/programstudi/update/{id}", [ProdiController::class, "update"])->name("programstudi.update");
+
+//ke fungsi delete/destroy
+Route::delete("/programstudi/delete/{id}", [ProdiController::class, "destroy"]);
