@@ -25,6 +25,8 @@
                         <th>Kode</th>
                         <th>Nama Prodi</th>
                         <th>Fakultas</th>
+                        <th>Foto / Logo</th>
+
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -35,6 +37,9 @@
                             <td>{{ $item->kode_prodi }}</td>
                             <td>{{ $item->nama_prodi }}</td>
                             <td>{{ $item->fakultas->nama }}</td>
+                            <td>
+                                <img src="{{asset('storage/'. $item->foto)}}" alt="" width="100">
+                            </td>
                             <td>
                                 <a href="{{ url('/programstudi/detail/'.$item->id) }}" class="btn btn-warning">Detail</a>
                                 <form action="{{ url('/programstudi/delete/'.$item->id) }}" method="post">

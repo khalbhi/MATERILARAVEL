@@ -28,8 +28,14 @@ class ProdiController extends Controller
         //0. Lakukan Validation
         $validation = $request->validate([
            'nama' => 'required|min:5|max:20',
+           'foto' => 'required|file|image|max:5000'
            //field dan atauran lainnya
         ]);
+
+        //proses upload file
+        $ext = $request->foto->getClientOriginalExtension();
+        $nama_file = "foto-".time().".".$ext;
+        $path = $request->foto->storeAs("public", $nama_file);
 
         //1. ambil nilai inputan form
         //2. panggil fungsi insert - boleh raw / eloquent
@@ -37,6 +43,7 @@ class ProdiController extends Controller
         $programstudi->nama_prodi = $request->nama; // $validation['nama']
         $programstudi->kode_prodi = $request->kode; 
         $programstudi->id_fakultas = 1;
+        $programstudi->foto = $nama_file;
         $programstudi->save();
 
         //3. redirect ke halaman index / detail / form create

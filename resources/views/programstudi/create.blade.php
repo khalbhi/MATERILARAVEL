@@ -8,7 +8,7 @@
             {{ session()->get('info') }}
         </div>
     @endif
-    <form action="{{ url('programstudi/store') }}" method="post">
+    <form action="{{ url('programstudi/store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -26,6 +26,14 @@
                 <div class="text-danger"> {{ $message }}</div>
             @enderror
         </div>
+        <div class="form-group">
+            <label for="foto">Foto/Logo</label>
+            <input type="file" name="foto" id="foto" class="form-control">
+            @error('foto')
+                <div class="text-danger"> {{ $message }}</div>
+            @enderror    
+        </div>
+
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
 @endsection
