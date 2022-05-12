@@ -27,6 +27,21 @@
                 <div class="text-danger"> {{ $message }}</div>
             @enderror
         </div>
+
+        <div class="form-group">
+            <label>Foto/Logo Lama</label>
+            <div>
+                <img src="{{asset('storage/'. $programstudi->foto)}}" alt="" width="100">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="foto">Foto/Logo</label>
+            <input type="file" name="foto" id="foto" class="form-control">
+            @error('foto')
+                <div class="text-danger"> {{ $message }}</div>
+            @enderror
+        </div>
+
         <button type="submit" class="btn btn-success">Update</button>
     </form>
 @endsection

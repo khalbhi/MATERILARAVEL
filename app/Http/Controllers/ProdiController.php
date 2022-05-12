@@ -70,16 +70,30 @@ class ProdiController extends Controller
     public function update(Request $request, $id)
     {
         //0. Lakukan Validation
-        $validation = $request->validate([
-           'nama' => 'required|min:5|max:20',
-           //field dan atauran lainnya
-        ]);
+        if ($request->hasFile('foto')) {    //validation jika ada file baru yg akan di upload
+            $validation = $request->validate([
+                'nama' => 'required|min:5|max:20',
+                'foto' => 'required|file|image|max:5000'
+            ]);
+
+            //proses upload file
+            $ext = $request->foto->getClientOriginalExtension();
+            $nama_file = "foto-".time().".".$ext;
+            $path = $request->foto->storeAs("public", $nama_file);
+
+        }else{                              //validation jika tidak upload file
+            $validation = $request->validate([
+                'nama' => 'required|min:5|max:20'
+            ]);
+        }
 
         //1. ambil nilai inputan form
         //2. panggil fungsi get data by id 
         $programstudi = Programstudi::find($id);
         $programstudi->nama_prodi = $request->nama; // $validation['nama']
         $programstudi->kode_prodi = $request->kode;
+        $programstudi->foto = ($request->hasFile('foto')) ? $nama_file : $programstudi->foto;
+
         $programstudi->save();
 
         //3. redirect ke halaman index / detail / form edit
