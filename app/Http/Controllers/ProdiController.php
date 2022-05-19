@@ -7,6 +7,11 @@ use App\Models\Programstudi;
 
 class ProdiController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     //Tugas : 
     //Tampilkan data Program Studi di dalam Tabel
     //Tampilkan tombol aksi (action) edit dan hapus
